@@ -42,6 +42,10 @@ EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 # Application definition
 
 INSTALLED_APPS = [
+    'cloudinary_storage',
+    'django.contrib.staticfiles',
+    'cloudinary',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,9 +54,6 @@ INSTALLED_APPS = [
     "myapp",
     'items',
     'cart',
-    'cloudinary_storage',
-    'django.contrib.staticfiles',
-    'cloudinary',
 ]
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dh14mg7ru',
@@ -142,7 +143,14 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "cloudinary_storage.storage.StaticCloudinaryStorage",
+    },
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
