@@ -55,17 +55,13 @@ INSTALLED_APPS = [
     'items',
     'cart',
 ]
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dh14mg7ru',
-    'API_KEY': '184573634298445',
-    'API_SECRET': 'wauZIAvgHnmsArGHwSnL2ZsEE3M'
-}
+
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'dh14mg7ru'),
     'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
     'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET')
 }
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticCloudinaryStorage'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
