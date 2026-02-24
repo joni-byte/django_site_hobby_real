@@ -1,0 +1,337 @@
+{% extends 'core/base.html' %}
+
+{% block title %}About Us — Hobby Georgia{% endblock %}
+
+{% block content %}
+
+<style>
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+    @keyframes drawLine {
+        from { width: 0; }
+        to   { width: 100%; }
+    }
+
+    .fade-up   { animation: fadeUp 0.9s ease both; }
+    .fade-up-2 { animation: fadeUp 0.9s ease 0.2s both; }
+    .fade-up-3 { animation: fadeUp 0.9s ease 0.4s both; }
+    .fade-up-4 { animation: fadeUp 0.9s ease 0.6s both; }
+    .fade-in   { animation: fadeIn 1.2s ease 0.3s both; }
+
+    .ornament { color: #b5a48a; font-size: 1.5rem; letter-spacing: 0.5rem; }
+
+    .vintage-divider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 2.5rem 0;
+    }
+    .vintage-divider::before,
+    .vintage-divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(to right, transparent, #c8b99a, transparent);
+    }
+
+    .stat-card {
+        border: 1px solid #d6c9b0;
+        background: #fdfaf4;
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .stat-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 6px 6px 0px rgba(120,113,108,0.2);
+    }
+    .stat-card::before {
+        content: '';
+        position: absolute;
+        top: 4px; left: 4px; right: -4px; bottom: -4px;
+        border: 1px solid #d6c9b0;
+        z-index: -1;
+    }
+
+    .value-item {
+        border-left: 3px solid #b5a48a;
+        padding-left: 1.25rem;
+        transition: border-color 0.3s;
+    }
+    .value-item:hover { border-color: #7a6a52; }
+
+    .pull-quote {
+        position: relative;
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+    }
+    .pull-quote::before {
+        content: '\201C';
+        font-size: 8rem;
+        line-height: 1;
+        color: #e8dfd0;
+        position: absolute;
+        top: -2rem;
+        left: -1rem;
+        font-family: 'Playfair Display', serif;
+        z-index: 0;
+    }
+    .pull-quote p { position: relative; z-index: 1; }
+
+    .team-card {
+        transition: transform 0.3s ease;
+    }
+    .team-card:hover { transform: translateY(-6px); }
+
+    .tag-badge {
+        display: inline-block;
+        border: 1px solid #c8b99a;
+        color: #7a6a52;
+        font-size: 0.6rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        padding: 0.2rem 0.6rem;
+        background: #fdf8f0;
+    }
+</style>
+
+<!-- ═══════════════════════════════════════ HERO ═══════════ -->
+<section class="text-center py-20 fade-up" style="max-width:680px; margin:0 auto;">
+    <p class="ornament fade-up">✦ ✦ ✦</p>
+
+    <h1 class="brand-font text-6xl font-bold text-stone-900 leading-tight mt-4 fade-up-2"
+        style="font-size: clamp(2.5rem, 6vw, 4.5rem);">
+        Our Story
+    </h1>
+
+    <div class="vintage-divider fade-up-3">
+        <span class="ornament" style="font-size:1rem; letter-spacing:0.3rem;">❦ ❦ ❦</span>
+    </div>
+
+    <p class="text-stone-500 text-xs uppercase tracking-[0.35em] fade-up-3">
+        Est. Tbilisi &mdash; Georgia &mdash; MMXX
+    </p>
+
+    <p class="mt-8 text-stone-600 text-lg leading-relaxed fade-up-4" style="font-family:'EB Garamond',serif;">
+        Hobby Georgia was born from a simple conviction: that beautiful, storied objects deserve a second life,
+        and that the collectors who seek them deserve a place of genuine trust and refined taste.
+    </p>
+</section>
+
+
+<!-- ═══════════════════════════════════ PULL QUOTE ══════════ -->
+<section class="fade-in py-16 px-8" style="background:#f3ede0; margin: 0 -1.5rem;">
+    <div style="max-width:720px; margin:0 auto;" class="pull-quote">
+        <p class="text-stone-800 text-2xl leading-relaxed" style="font-size:clamp(1.2rem,2.5vw,1.6rem);">
+            Every object holds a memory. We are simply the keepers who pass it forward.
+        </p>
+        <p class="mt-4 text-stone-500 text-sm uppercase tracking-widest">— The Founders, Hobby Georgia</p>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════ STATS ROW ═══════════ -->
+<section class="py-16 fade-up-2">
+    <div class="grid grid-cols-2 gap-6" style="max-width:640px; margin:0 auto;">
+
+        <div class="stat-card p-8 text-center">
+            <p class="brand-font text-5xl font-bold text-stone-900">500<span style="color:#b5a48a;">+</span></p>
+            <p class="text-stone-500 text-xs uppercase tracking-widest mt-2">Curated Items</p>
+        </div>
+
+        <div class="stat-card p-8 text-center">
+            <p class="brand-font text-5xl font-bold text-stone-900">5</p>
+            <p class="text-stone-500 text-xs uppercase tracking-widest mt-2">Years of Collecting</p>
+        </div>
+
+        <div class="stat-card p-8 text-center">
+            <p class="brand-font text-5xl font-bold text-stone-900">12<span style="color:#b5a48a;">+</span></p>
+            <p class="text-stone-500 text-xs uppercase tracking-widest mt-2">Categories</p>
+        </div>
+
+        <div class="stat-card p-8 text-center">
+            <p class="brand-font text-5xl font-bold text-stone-900">1K<span style="color:#b5a48a;">+</span></p>
+            <p class="text-stone-500 text-xs uppercase tracking-widest mt-2">Happy Collectors</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════ OUR MISSION ════════════ -->
+<section class="py-16 fade-up" style="max-width:800px; margin:0 auto;">
+
+    <div class="vintage-divider">
+        <span class="brand-font text-stone-400 text-xs uppercase tracking-[0.4em]">Our Mission</span>
+    </div>
+
+    <div class="grid gap-12" style="grid-template-columns: 1fr 1fr;">
+
+        <div>
+            <h2 class="brand-font text-3xl font-bold text-stone-900 mb-4">What We Do</h2>
+            <p class="text-stone-600 leading-relaxed">
+                We travel across Georgia and beyond, hunting flea markets, private estates, and forgotten
+                attics for objects of genuine character. Every piece that reaches our shelves has been
+                handled, authenticated, and deemed worthy of a discerning collector.
+            </p>
+            <p class="text-stone-600 leading-relaxed mt-4">
+                We stock everything from Soviet-era porcelain and Art Deco jewellery to antique maps,
+                brass instruments, and hand-bound books — united by a single thread of quality.
+            </p>
+        </div>
+
+        <div>
+            <h2 class="brand-font text-3xl font-bold text-stone-900 mb-4">Why It Matters</h2>
+            <p class="text-stone-600 leading-relaxed">
+                Mass production erases the particular. Vintage objects resist that erasure.
+                They carry maker's marks, patina, imperfection — signs of a life lived in the world.
+            </p>
+            <p class="text-stone-600 leading-relaxed mt-4">
+                By giving these objects new homes, we participate in a quiet act of preservation —
+                keeping craft traditions visible and tactile in an increasingly digital age.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════ VALUES ═══════════════ -->
+<section class="py-16 fade-up" style="background:#fdf8f0; margin:0 -1.5rem; padding-left:1.5rem; padding-right:1.5rem;">
+    <div style="max-width:800px; margin:0 auto;">
+
+        <div class="vintage-divider">
+            <span class="brand-font text-stone-400 text-xs uppercase tracking-[0.4em]">What We Stand For</span>
+        </div>
+
+        <div class="grid gap-8 mt-8" style="grid-template-columns:1fr 1fr;">
+
+            <div class="value-item">
+                <h3 class="brand-font text-xl font-bold text-stone-800 mb-2">Authenticity</h3>
+                <p class="text-stone-500 leading-relaxed text-sm">
+                    We never sell reproductions. Every item is genuine, and we stand behind our descriptions completely.
+                </p>
+            </div>
+
+            <div class="value-item">
+                <h3 class="brand-font text-xl font-bold text-stone-800 mb-2">Curation</h3>
+                <p class="text-stone-500 leading-relaxed text-sm">
+                    We are selective. Not everything old is worth keeping — only the exceptional earns a place in our collection.
+                </p>
+            </div>
+
+            <div class="value-item">
+                <h3 class="brand-font text-xl font-bold text-stone-800 mb-2">Community</h3>
+                <p class="text-stone-500 leading-relaxed text-sm">
+                    Collectors are our kin. We host events, share knowledge freely, and treat every customer as a fellow enthusiast.
+                </p>
+            </div>
+
+            <div class="value-item">
+                <h3 class="brand-font text-xl font-bold text-stone-800 mb-2">Sustainability</h3>
+                <p class="text-stone-500 leading-relaxed text-sm">
+                    Buying vintage is the most sustainable form of shopping. We champion reuse over consumption.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════ TEAM ══════════════════ -->
+<section class="py-16 fade-up" style="max-width:800px; margin:0 auto;">
+
+    <div class="vintage-divider">
+        <span class="brand-font text-stone-400 text-xs uppercase tracking-[0.4em]">The Society</span>
+    </div>
+
+    <div class="grid gap-8 mt-8" style="grid-template-columns: repeat(3, 1fr);">
+
+        <!-- Team Member 1 -->
+        <div class="team-card text-center">
+            <div class="mx-auto mb-4 flex items-center justify-center"
+                 style="width:90px;height:90px;border-radius:50%;background:#ede6d6;border:2px solid #c8b99a; font-size:2rem;">
+                🕵️
+            </div>
+            <h3 class="brand-font text-lg font-bold text-stone-900">Nino Kvaratskhelia</h3>
+            <p class="text-stone-400 text-xs uppercase tracking-widest mt-1">Founder & Chief Curator</p>
+            <p class="text-stone-500 text-sm mt-3 leading-relaxed">
+                An archaeologist by training, a collector by obsession. Nino's eye for the genuine is uncanny.
+            </p>
+            <div class="mt-3">
+                <span class="tag-badge">Porcelain</span>
+                <span class="tag-badge ml-1">Jewellery</span>
+            </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="team-card text-center">
+            <div class="mx-auto mb-4 flex items-center justify-center"
+                 style="width:90px;height:90px;border-radius:50%;background:#ede6d6;border:2px solid #c8b99a; font-size:2rem;">
+                📜
+            </div>
+            <h3 class="brand-font text-lg font-bold text-stone-900">Giorgi Beridze</h3>
+            <p class="text-stone-400 text-xs uppercase tracking-widest mt-1">Maps & Manuscripts</p>
+            <p class="text-stone-500 text-sm mt-3 leading-relaxed">
+                Giorgi's passion for cartography led him to build one of Tbilisi's finest private map collections.
+            </p>
+            <div class="mt-3">
+                <span class="tag-badge">Maps</span>
+                <span class="tag-badge ml-1">Books</span>
+            </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="team-card text-center">
+            <div class="mx-auto mb-4 flex items-center justify-center"
+                 style="width:90px;height:90px;border-radius:50%;background:#ede6d6;border:2px solid #c8b99a; font-size:2rem;">
+                ⚙️
+            </div>
+            <h3 class="brand-font text-lg font-bold text-stone-900">Tamar Lomidze</h3>
+            <p class="text-stone-400 text-xs uppercase tracking-widest mt-1">Instruments & Brass</p>
+            <p class="text-stone-500 text-sm mt-3 leading-relaxed">
+                A musician who fell in love with the machines that make music. Tamar restores as well as she sells.
+            </p>
+            <div class="mt-3">
+                <span class="tag-badge">Brass</span>
+                <span class="tag-badge ml-1">Instruments</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ═══════════════════════════════════ CTA ════════════════ -->
+<section class="text-center py-20 fade-up">
+    <div class="vintage-divider">
+        <span class="ornament" style="font-size:1rem; letter-spacing:0.3rem;">❦ ❦ ❦</span>
+    </div>
+
+    <h2 class="brand-font text-4xl font-bold text-stone-900 mt-4">Join the Society</h2>
+    <p class="text-stone-500 mt-4 max-w-md mx-auto leading-relaxed">
+        Whether you are a seasoned collector or simply someone who appreciates beautiful things —
+        you are welcome here.
+    </p>
+
+    <div class="flex justify-center gap-4 mt-10">
+        <a href="{% url 'myapp:all-items' %}"
+           class="px-8 py-3 text-xs uppercase tracking-[0.2em] font-bold border border-stone-800 text-white bg-stone-800 hover:bg-transparent hover:text-stone-800 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(120,113,108,0.3)]">
+            Browse Collection
+        </a>
+        <a href="{% url 'myapp:contact' %}"
+           class="px-8 py-3 text-xs uppercase tracking-[0.2em] font-bold border border-stone-400 text-stone-700 hover:bg-stone-800 hover:text-white transition-all duration-300">
+            Get in Touch
+        </a>
+    </div>
+
+    <p class="ornament mt-12">✦ ✦ ✦</p>
+</section>
+
+{% endblock %}

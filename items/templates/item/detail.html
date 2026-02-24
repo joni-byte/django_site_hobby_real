@@ -1,0 +1,71 @@
+{% extends 'core/base.html' %}
+{% block title %}{{ item.name }}{% endblock title %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        
+        <div class="relative group">
+            <div class="overflow-hidden rounded-3xl bg-stone-100 shadow-2xl transition-all duration-500 group-hover:shadow-stone-300">
+                <img src="{{ item.image.url }}" alt="{{ item.name }}" class="w-full h-[600px] object-cover transition-transform duration-700 group-hover:scale-105">
+            </div>
+            <div class="absolute top-6 left-6 bg-white/90 backdrop-blur-md px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase text-stone-800 shadow-sm">
+                {{ item.category.name }}
+            </div>
+        </div>
+
+        <div class="space-y-8 lg:sticky lg:top-12">
+            <div>
+                <nav class="flex mb-4 text-xs font-bold tracking-widest uppercase text-stone-400">
+                    <a href="{% url 'myapp:all-items' %}" class="hover:text-stone-900 transition-colors">Emporium</a>
+                    <span class="mx-2">/</span>
+                    <span class="text-stone-900">{{ item.category.name }}</span>
+                </nav>
+                <h1 class="text-5xl font-black text-stone-900 tracking-tight mb-2">{{ item.name }}</h1>
+                <p class="text-3xl font-light text-stone-600">${{ item.price }}</p>
+            </div>
+
+            <div class="border-t border-stone-200 pt-8">
+                <h3 class="text-xs font-bold tracking-[0.2em] uppercase text-stone-400 mb-4">Description</h3>
+                <p class="text-lg text-stone-600 leading-relaxed font-light italic">
+                    "{{ item.description }}"
+                </p>
+            </div>
+
+            <div class="pt-8">
+                {% if user.is_authenticated %}
+                        {% csrf_token %}
+                        
+                      
+                    <form action="{% url 'cart:add_to_cart' item.pk %}" method="post" class="space-y-4">
+                        {% csrf_token %}
+                        
+                        <button type="submit" class="w-full group relative flex items-center justify-center px-8 py-5 bg-stone-900 text-white overflow-hidden rounded-2xl transition-all hover:bg-stone-800 active:scale-95 shadow-xl">
+                            <span class="relative z-10 uppercase tracking-[0.3em] font-bold text-sm">Add to Cart</span>
+                            <div class="absolute inset-0 bg-stone-700 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                        </button>
+                    </form>
+                {% else %}
+                    <div class="space-y-4">
+                        <a href="{% url 'myapp:login' %}" class="w-full flex items-center justify-center px-8 py-5 border-2 border-stone-900 text-stone-900 rounded-2xl font-bold uppercase tracking-[0.2em] text-sm hover:bg-stone-900 hover:text-white transition-all duration-300">
+                            გაიარეთ ავტორიზაცია შესაძენად
+                        </a>
+                        <p class="text-center text-xs text-stone-400 italic">გთხოვთ გაიაროთ ავტორიზაცია რათა ნივთი დაამატოთ კალათაში.</p>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 pt-8 border-t border-stone-100">
+                <div class="flex items-center space-x-3 text-stone-500">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                    <span class="text-xs font-medium uppercase tracking-wider">Secure Shipping</span>
+                </div>
+                <div class="flex items-center space-x-3 text-stone-500">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    <span class="text-xs font-medium uppercase tracking-wider">Authentic Item</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

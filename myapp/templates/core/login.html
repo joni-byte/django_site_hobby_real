@@ -1,0 +1,85 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Log in | Hobby Georgia{% endblock %}
+
+{% block content %}
+<div class="max-w-xl mx-auto mt-12 mb-20 p-12 bg-white border border-stone-300 shadow-xl relative overflow-hidden">
+    <div class="absolute -top-6 -right-6 w-32 h-32 border-4 border-stone-100 rounded-full flex items-center justify-center rotate-12 select-none pointer-events-none">
+        <span class="text-stone-100 font-bold text-xs uppercase tracking-widest text-center">Verified<br>Access</span>
+    </div>
+
+    <div class="text-center mb-10">
+        <h1 class="brand-font text-4xl text-stone-900 uppercase tracking-tighter italic">Member Log In</h1>
+        <div class="flex items-center justify-center space-x-2 mt-2">
+            <div class="h-px w-12 bg-stone-300"></div>
+            <span class="text-stone-400 text-xs uppercase tracking-[0.3em] font-bold">Access the Archives</span>
+            <div class="h-px w-12 bg-stone-300"></div>
+        </div>
+    </div>
+
+    <form method="post" action="." class="space-y-8">
+        {% csrf_token %}
+
+        <div class="vintage-form-wrapper">
+            <label class="block text-xs uppercase tracking-widest font-bold mb-1 text-stone-500">Identity / Username</label>
+            {{ form.username }}
+        </div>
+
+        <div class="vintage-form-wrapper">
+            <label class="block text-xs uppercase tracking-widest font-bold mb-1 text-stone-500">Security Cipher</label>
+            {{ form.password }}
+        </div>
+
+        {% if form.errors or form.non_field_errors %}
+            <div class="p-4 border-l-2 border-red-800 bg-red-50 text-red-900 text-xs italic">
+                <p class="font-bold">Credential Discrepancy:</p>
+                <p>The archives do not recognize these details. Please verify your cipher and identity.</p>
+                {% if form.non_field_errors %}
+                    <div class="mt-2">{{ form.non_field_errors }}</div>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        <div class="mt-12 pt-8 border-t border-stone-100 text-center">
+            <button type="submit" class="group relative px-12 py-4 bg-stone-900 text-stone-100 uppercase tracking-[0.4em] text-sm font-bold hover:bg-stone-800 transition-all duration-300 shadow-lg">
+                <span class="relative z-10">Enter Emporium</span>
+                <div class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1/2 h-px bg-stone-500 group-hover:w-3/4 transition-all"></div>
+            </button>
+            
+            <div class="mt-8">
+                <a href="{% url 'myapp:signup' %}" class="text-[20px] text-stone-400 uppercase tracking-widest hover:text-stone-800 transition-colors">
+                    ჯერ არ გაგივლიათ რეგისტრაცია? შემოუერთდით საზოგადოებას
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<style>
+    /* Ledger-style inputs to match the Signup page */
+    .vintage-form-wrapper input {
+        width: 100%;
+        border: none !important;
+        border-bottom: 1px solid #d6d3d1 !important;
+        background-color: transparent !important;
+        padding: 0.6rem 0 !important;
+        font-family: 'EB Garamond', serif !important;
+        font-size: 1.1rem !important;
+        outline: none !important;
+        color: #1c1917 !important;
+        transition: border-bottom-color 0.4s ease !important;
+    }
+
+    .vintage-form-wrapper input:focus {
+        border-bottom-color: #1c1917 !important;
+        border-bottom-width: 2px !important;
+    }
+
+    /* Error list styling */
+    ul.errorlist {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+</style>
+{% endblock %}

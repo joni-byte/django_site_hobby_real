@@ -1,0 +1,91 @@
+{% extends "core/base.html" %}
+
+{% block title %}Contact Us | Hobby Georgia{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto mt-20 p-12 md:p-20 border border-stone-200 bg-white relative shadow-[0_20px_50px_rgba(0,0,0,0.05)]">
+    <div class="absolute top-4 left-4 w-8 h-8 border-t border-l border-stone-300"></div>
+    <div class="absolute top-4 right-4 w-8 h-8 border-t border-r border-stone-300"></div>
+    <div class="absolute bottom-4 left-4 w-8 h-8 border-b border-l border-stone-300"></div>
+    <div class="absolute bottom-4 right-4 w-8 h-8 border-b border-r border-stone-300"></div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+        
+        <div class="space-y-10">
+            <div>
+                <h1 class="brand-font text-5xl text-stone-900 mb-4 tracking-tight">Get in Touch</h1>
+                <div class="w-16 h-1 bg-purple-600 mb-6"></div>
+                <p class="italic text-stone-500 font-serif leading-relaxed text-lg">
+                    "Inquiries regarding our curiosities and collectibles are always welcome."
+                </p>
+            </div>
+
+            <div class="space-y-8">
+                <div class="flex items-start space-x-4">
+                    <span class="text-xl">✉</span>
+                    <div>
+                        <span class="block text-[10px] uppercase tracking-[0.3em] text-stone-400 font-bold mb-1">Electronic Mail</span>
+                        <p class="text-stone-800 font-medium hover:text-purple-600 transition-colors">example@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-4">
+                    <span class="text-xl">📞</span>
+                    <div>
+                        <span class="block text-[10px] uppercase tracking-[0.3em] text-stone-400 font-bold mb-1">Telephonic Line</span>
+                        <p class="text-stone-800 font-medium">+995 555 555 555</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-4">
+                    <span class="text-xl">📍</span>
+                    <div>
+                        <span class="block text-[10px] uppercase tracking-[0.3em] text-stone-400 font-bold mb-1">Our Physical Address</span>
+                        <p class="text-stone-800 font-medium leading-relaxed">
+                            Rustaveli Ave 1, Tbilisi, Georgia
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-stone-50 p-8 border border-stone-100">
+            <form action="{% url 'myapp:contact' %}" method="POST" class="space-y-6">
+                {% csrf_token %}
+                
+                <div>
+                    <label class="block text-[10px] uppercase tracking-widest text-stone-500 mb-2 font-bold">Full Name</label>
+                    <input name="name" type="text" placeholder="John Doe" 
+                           class="w-full px-4 py-3 bg-white border border-stone-200 outline-none focus:border-purple-500 transition-all font-serif italic text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-[10px] uppercase tracking-widest text-stone-500 mb-2 font-bold">Email Address</label>
+                    <input name="email" type="email" placeholder="john@example.com" 
+                           class="w-full px-4 py-3 bg-white border border-stone-200 outline-none focus:border-purple-500 transition-all font-serif italic text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-[10px] uppercase tracking-widest text-stone-500 mb-2 font-bold">Your Message</label>
+                    <textarea name="text" rows="4" placeholder="How can we help you?" 
+                              class="w-full px-4 py-3 bg-white border border-stone-200 outline-none focus:border-purple-500 transition-all font-serif italic text-sm resize-none"></textarea>
+                </div>
+
+                <button type="submit"
+                        class="w-full py-4 bg-stone-900 text-white text-xs uppercase tracking-[0.3em] font-bold hover:bg-purple-600 transition-all duration-500 shadow-lg">
+                    Send Inquiry
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="text-center mt-16 pt-8 border-t border-stone-100 text-stone-400 text-[10px] tracking-[0.5em] uppercase">
+        &mdash; Established 2026 &mdash;
+    </div>
+</div>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,400&display=swap');
+    .brand-font { font-family: 'Playfair Display', serif; }
+</style>
+{% endblock content %}
