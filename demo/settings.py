@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 from django.core.mail import send_mail
-import os
 from dotenv import load_dotenv
+import dj_database_url
 
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -93,23 +93,19 @@ TEMPLATES = [
     },
 ]
 
-# WSGI_APPLICATION = 'demo.wsgi.application'
+WSGI_APPLICATION = 'demo.wsgi.application'
+
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hobby',
-        'USER': 'postgres',
-        'PASSWORD': 'Jonathan123#',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600
+    )
 }
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# import dj_database_url
-import os
+
 
 # ძველი DATABASES წაშალე და ჩაანაცვლე ამით:
 # DATABASES = {
