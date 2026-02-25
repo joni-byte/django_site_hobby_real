@@ -77,7 +77,7 @@ MIDDLEWARE = [
 ]
 CSRF_TRUSTED_ORIGINS = ['https://django_site_hobby_real.onrender.com']
 ROOT_URLCONF = 'demo.urls'
-
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
