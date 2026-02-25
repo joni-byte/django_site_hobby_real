@@ -75,7 +75,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+CSRF_TRUSTED_ORIGINS = ['https://django_site_hobby_real.onrender.com']
 ROOT_URLCONF = 'demo.urls'
 
 TEMPLATES = [
