@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6bnnus!xqma_y)5zl7mgo6ey&x%=$9sb@(8gh%c__tppwbkksz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['django_site_hobby_real.onrender.com', 'localhost', '127.0.0.1']
 
@@ -45,9 +45,9 @@ EMAIL_TIMEOUT = 10
 # Application definition
 
 INSTALLED_APPS = [
-    'cloudinary_storage',
+    # 'cloudinary_storage',
     'django.contrib.staticfiles',
-    'cloudinary',
+    # 'cloudinary',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -68,7 +68,7 @@ STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticCloudinaryStorage'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -93,24 +93,33 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'demo.wsgi.application'
+# WSGI_APPLICATION = 'demo.wsgi.application'
 
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'hobby',
+        'USER': 'postgres',
+        'PASSWORD': 'Jonathan123#',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-import dj_database_url
+# import dj_database_url
 import os
 
 # ძველი DATABASES წაშალე და ჩაანაცვლე ამით:
-DATABASES = {
-    'default': dj_database_url.config(
-        # თუ სისტემაში DATABASE_URL არ არის (მაგალითად ლოკალურად),
-        # გამოიყენებს შენს ძველ პარამეტრებს
-        default=os.environ.get('DATABASE_URL', 'postgres://postgres:Jonathan123#@localhost:5432/hobby'),
-        conn_max_age=600
-    )
-}
+# DATABASES = {
+    
+#         # თუ სისტემაში DATABASE_URL არ არის (მაგალითად ლოკალურად),
+#         # გამოიყენებს შენს ძველ პარამეტრებს
+#         default=os.environ.get('DATABASE_URL', 'postgres://postgres:Jonathan123#@localhost:5432/hobby'),
+#         conn_max_age=600
+    
+# }
 
 
 # Password validation
