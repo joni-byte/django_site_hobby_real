@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-6bnnus!xqma_y)5zl7mgo6ey&x%=$9sb@(8gh%c__tppwbkksz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django_site_hobby_real.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['django-site-hobby-real.onrender.com', 'localhost', '127.0.0.1']
 
 import os
 
