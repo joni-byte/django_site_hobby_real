@@ -78,3 +78,7 @@ def search(request):
             'items': items,
         
         })
+    
+
+def ping(request):
+    return HttpResponse("pong")
